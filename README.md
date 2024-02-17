@@ -1,4 +1,7 @@
-# ImageDedupeFlow: High-Speed Precision Pipeline for Image Duplication Detection
+<p align="center">
+  <b>ImageDedupeFlow</b><br>
+  <i>High-Speed Precision Pipeline for Image Duplication Detection</i>
+</p>
 
 ```mermaid
 flowchart TB
