@@ -1,10 +1,5 @@
 # efficient-image-processing
 
-<p align="center">
-  <img src="process.jpg" alt="alt text" />
-</p>
-
-
 ```mermaid
 flowchart TB
     intro[Introduction\nExplain efficient pipeline]:::introBackground
@@ -68,19 +63,20 @@ flowchart TB
     conclusion -->|Summary of Findings| summaryFindings[Summary of Findings\nEfficient detection capabilities]:::conclusionContent
     conclusion -->|Feedback Invitation| feedbackInvite[Feedback Invitation\nFor enhancements or deployments]:::conclusionContent
 
-    %% Styling Definitions
-    classDef introBackground fill:#d8e8f9,stroke:#333,stroke-width:2px;
-    classDef pipelineDetails fill:#f9f7d8,stroke:#333,stroke-width:2px;
-    classDef resultsConclusion fill:#e8f9d8,stroke:#333,stroke-width:2px;
-    classDef stages fill:#f9d8f8,stroke:#333,stroke-width:2px;
-    classDef algorithm fill:#f0f0f0,stroke:#333,stroke-width:2px;
-    classDef decision fill:#f9f0d8,stroke:#333,stroke-width:4px,stroke-dasharray: 5, 5;
-    classDef filter fill:#d8f9ec,stroke:#333,stroke-width:2px;
-    classDef confirm fill:#d8f9d8,stroke:#333,stroke-width:2px;
-    classDef designGoals fill:#f0f0f0,stroke:#333,stroke-width:2px;
-    classDef implementationStrategies fill:#f0f0f0,stroke:#333,stroke-width:2px;
-    classDef resultsData fill:#f0f0f0,stroke:#333,stroke-width:2px;
-    classDef conclusionContent fill:#f0f0f0,stroke:#333,stroke-width:2px;
+    %% Styling Definitions for Mode-Agnostic Viewing
+    classDef introBackground fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef pipelineDetails fill:#eee,stroke:#333,stroke-width:2px,color:#333;
+    classDef resultsConclusion fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef stages fill:#f3f3f3,stroke:#333,stroke-width:2px,color:#333;
+    classDef algorithm fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef decision fill:#e7e7e7,stroke:#333,stroke-width:4px,stroke-dasharray: 5, 5,color:#333;
+    classDef filter fill:#efffef,stroke:#333,stroke-width:2px,color:#333;
+    classDef confirm fill:#efffef,stroke:#333,stroke-width:2px,color:#333;
+    classDef designGoals fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef implementationStrategies fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef resultsData fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+    classDef conclusionContent fill:#fff,stroke:#333,stroke-width:2px,color:#333;
+
 ```
 
 - [Introduction](#introduction)
@@ -120,6 +116,10 @@ Several factors pose challenges in this context:
 An effective conditional pipeline should thus optimize for computational performance but with enough configurability to account for dataset variability and use appropriate techniques for detailed analysis where required. 
 
 The pipeline proposed here is designed expressly to balance processing speed and accuracy by leveraging the complementary strengths of different methods based on computational cost. The techniques themselves are not novel but rather implemented strategically in combination.
+
+<p align="center">
+  <img src="process.jpg" alt="alt text" />
+</p>
 
 ### Proposed Pipeline
 
