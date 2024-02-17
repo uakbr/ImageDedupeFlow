@@ -1,4 +1,4 @@
-# efficient-image-processing
+# ImageDedupeFlow: High-Speed Precision Pipeline for Image Duplication Detection
 
 ```mermaid
 flowchart TB
