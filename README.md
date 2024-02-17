@@ -1,5 +1,10 @@
 # efficient-image-processing
 
+<p align="center">
+  <img src="process.jpg" alt="alt text" />
+</p>
+
+
 ```mermaid
 flowchart TB
     intro[Introduction\nExplain efficient pipeline]:::introBackground
