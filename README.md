@@ -3,6 +3,14 @@
   <i>High-Speed Precision Pipeline for Image Duplication Detection</i>
 </p>
 
+The purpose of this repository is to explain an efficient pipeline developed for comparing and analyzing image datasets to determine near-duplicate pairs. As increasing volumes of visual data are captured across various domains, from scientific imaging to personal photo libraries, automating image similarity assessment is essential. However, exhaustive pixel-level comparisons have proven computationally intractable. This report details a multi-stage conditional pipeline optimized for accuracy and speed when processing large corpora.
+
+The intended audience comprises computer vision experts and engineers seeking to leverage image analysis for tasks ranging from search indexing to content moderation. An understanding of fundamental techniques like histogram comparison, structural similarity, and feature extraction is presumed. Mathematical formalisms are avoided in favor of simplified explanations focused on real-world functionality and performance. 
+
+By sequentially applying methods of increasing complexity, the similarity of image pairs can be determined conclusively in most cases after only one or two initial checks. Only the small subset of images pairs that evade categorization by computationally inexpensive techniques proceed to intensive processes like feature matching. System resources are thereby conserved without sacrificing accuracy.
+
+We welcome any feedback from readers on potential enhancements to the pipeline stages or alternative implementations for specific use cases. Please reach out to the authors with questions or suggestions.
+
 ```mermaid
 flowchart TB
     intro[Introduction\nExplain efficient pipeline]:::introBackground
@@ -82,7 +90,6 @@ flowchart TB
 
 ```
 
-- [Introduction](#introduction)
 - [Background](#background)
 - [Proposed Pipeline](#proposed-pipeline)
   * [Design Goals](#design-goals)
@@ -93,16 +100,6 @@ flowchart TB
 - [Implementation Details](#implementation-details)
 - [Results](#results)
 - [Conclusion](#conclusion)
-
-### Introduction
-
-The purpose of this report is to explain an efficient pipeline developed for comparing and analyzing image datasets to determine near-duplicate pairs. As increasing volumes of visual data are captured across various domains, from scientific imaging to personal photo libraries, automating image similarity assessment is essential. However, exhaustive pixel-level comparisons have proven computationally intractable. This report details a multi-stage conditional pipeline optimized for accuracy and speed when processing large corpora.
-
-The intended audience comprises computer vision experts and engineers seeking to leverage image analysis for tasks ranging from search indexing to content moderation. An understanding of fundamental techniques like histogram comparison, structural similarity, and feature extraction is presumed. Mathematical formalisms are avoided in favor of simplified explanations focused on real-world functionality and performance. 
-
-By sequentially applying methods of increasing complexity, the similarity of image pairs can be determined conclusively in most cases after only one or two initial checks. Only the small subset of images pairs that evade categorization by computationally inexpensive techniques proceed to intensive processes like feature matching. System resources are thereby conserved without sacrificing accuracy.
-
-We welcome any feedback from readers on potential enhancements to the pipeline stages or alternative implementations for specific use cases. Please reach out to the authors with questions or suggestions.
 
 ### Background
 
