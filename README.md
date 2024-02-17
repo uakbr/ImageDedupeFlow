@@ -1,5 +1,71 @@
 # efficient-image-processing
 
+```mermaid
+flowchart TB
+    intro[Introduction]
+    background[Background]
+    pipeline[Proposed Pipeline]
+    implementation[Implementation Details]
+    results[Results]
+    conclusion[Conclusion]
+    
+    intro --> background
+    background --> pipeline
+    pipeline --> implementation
+    implementation --> results
+    results --> conclusion
+
+    %% Proposed Pipeline Breakdown
+    pipeline -->|Design Goals| designGoals
+    pipeline -->|Stage 1: Histogram Comparison| histComp
+    pipeline -->|Stage 2: SSIM| ssim
+    pipeline -->|Stage 3: SIFT| sift
+    pipeline -->|Stage 4: Edge Detection| edgeDet
+    
+    %% Stage 1: Histogram Comparison
+    histComp -->|Calculate Histograms| calcHistograms
+    calcHistograms -->|Compare Histograms| compHistograms
+    compHistograms -->|Decision: Proceed if threshold met| dec1
+    dec1 -->|Yes| ssim
+    dec1 -->|No| filterOut1[Filter Out]
+    
+    %% Stage 2: SSIM
+    ssim -->|Divide into Windows| divideWindows
+    divideWindows -->|Extract Measurements| extractMeasures
+    extractMeasures -->|Calculate Similarity Score| calcSimScore
+    calcSimScore -->|Decision: Proceed if threshold met| dec2
+    dec2 -->|Yes| sift
+    dec2 -->|No| filterOut2[Filter Out]
+    
+    %% Stage 3: SIFT
+    sift -->|Detect Keypoints| detectKeypoints
+    detectKeypoints -->|Compute Descriptors| computeDescriptors
+    computeDescriptors -->|Match Descriptors| matchDescriptors
+    matchDescriptors -->|Decision: Proceed if threshold met| dec3
+    dec3 -->|Yes| edgeDet
+    dec3 -->|No| filterOut3[Filter Out]
+    
+    %% Stage 4: Edge Detection
+    edgeDet -->|Generate Edge Maps| genEdgeMaps
+    genEdgeMaps -->|Compare Edge Maps| compEdgeMaps
+    compEdgeMaps -->|Decision: Confirm match if below threshold| dec4
+    dec4 -->|Yes| confirmMatch[Confirm Match]
+    dec4 -->|No| filterOut4[Filter Out]
+
+    %% Implementation Details
+    implementation -->|Conditional Logic| conditionalLogic
+    implementation -->|Parallelization| parallelization
+    implementation -->|Hardware Optimization| hardwareOpt
+    
+    %% Results and Conclusion
+    results -->|Performance and Accuracy| perfAcc
+    conclusion -->|Summary and Feedback| summaryFeedback
+
+    %% Styling
+    classDef stage fill:#f9f,stroke:#333,stroke-width:2px;
+    class intro,background,pipeline,implementation,results,conclusion stage;
+```
+
 - [Introduction](#introduction)
 - [Background](#background)
 - [Proposed Pipeline](#proposed-pipeline)
