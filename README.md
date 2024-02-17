@@ -2,12 +2,12 @@
 
 ```mermaid
 flowchart TB
-    intro[Introduction]
-    background[Background]
-    pipeline[Proposed Pipeline]
-    implementation[Implementation Details]
-    results[Results]
-    conclusion[Conclusion]
+    intro[Introduction\nExplain efficient pipeline]:::introBackground
+    background[Background\nNeed for an automated pipeline]:::introBackground
+    pipeline[Proposed Pipeline\nSequential stages]:::pipelineDetails
+    implementation[Implementation Details\nStrategies for efficiency]:::pipelineDetails
+    results[Results\nPerformance and accuracy metrics]:::resultsConclusion
+    conclusion[Conclusion\nSummary and feedback]:::resultsConclusion
     
     intro --> background
     background --> pipeline
@@ -16,54 +16,66 @@ flowchart TB
     results --> conclusion
 
     %% Proposed Pipeline Breakdown
-    pipeline -->|Design Goals| designGoals
-    pipeline -->|Stage 1: Histogram Comparison| histComp
-    pipeline -->|Stage 2: SSIM| ssim
-    pipeline -->|Stage 3: SIFT| sift
-    pipeline -->|Stage 4: Edge Detection| edgeDet
+    pipeline -->|Design Goals| designGoals[Design Goals\nMinimize unnecessary processing]:::designGoals
+    pipeline -->|Stage 1: Histogram Comparison| histComp[Stage 1: Histogram Comparison\nQuick color distribution analysis]:::stages
+    pipeline -->|Stage 2: SSIM| ssim[Stage 2: SSIM\nStructure and contrast analysis]:::stages
+    pipeline -->|Stage 3: SIFT| sift[Stage 3: SIFT\nFeature matching]:::stages
+    pipeline -->|Stage 4: Edge Detection| edgeDet[Stage 4: Edge Detection\nOptional validation step]:::stages
     
     %% Stage 1: Histogram Comparison
-    histComp -->|Calculate Histograms| calcHistograms
-    calcHistograms -->|Compare Histograms| compHistograms
-    compHistograms -->|Decision: Proceed if threshold met| dec1
+    histComp -->|Calculate Histograms| calcHistograms[Calculate Histograms\nRGB, grayscale]:::algorithm
+    calcHistograms -->|Compare Histograms| compHistograms[Compare Histograms\nStatistical correlation]:::algorithm
+    compHistograms -->|Decision: Proceed if threshold met| dec1{{Decision\nThreshold met?}}:::decision
     dec1 -->|Yes| ssim
-    dec1 -->|No| filterOut1[Filter Out]
+    dec1 -->|No| filterOut1[Filter Out\nDissimilar pair]:::filter
     
     %% Stage 2: SSIM
-    ssim -->|Divide into Windows| divideWindows
-    divideWindows -->|Extract Measurements| extractMeasures
-    extractMeasures -->|Calculate Similarity Score| calcSimScore
-    calcSimScore -->|Decision: Proceed if threshold met| dec2
+    ssim -->|Divide into Windows| divideWindows[Divide into Windows\n8x8 pixel windows]:::algorithm
+    divideWindows -->|Extract Measurements| extractMeasures[Extract Measurements\nStructure, luminance, contrast]:::algorithm
+    extractMeasures -->|Calculate Similarity Score| calcSimScore[Calculate Similarity Score\nOverall score]:::algorithm
+    calcSimScore -->|Decision: Proceed if threshold met| dec2{{Decision\nThreshold met?}}:::decision
     dec2 -->|Yes| sift
-    dec2 -->|No| filterOut2[Filter Out]
+    dec2 -->|No| filterOut2[Filter Out\nNon-duplicate]:::filter
     
     %% Stage 3: SIFT
-    sift -->|Detect Keypoints| detectKeypoints
-    detectKeypoints -->|Compute Descriptors| computeDescriptors
-    computeDescriptors -->|Match Descriptors| matchDescriptors
-    matchDescriptors -->|Decision: Proceed if threshold met| dec3
+    sift -->|Detect Keypoints| detectKeypoints[Detect Keypoints\nUsing difference-of-Gaussians]:::algorithm
+    detectKeypoints -->|Compute Descriptors| computeDescriptors[Compute Descriptors\nBased on local gradients]:::algorithm
+    computeDescriptors -->|Match Descriptors| matchDescriptors[Match Descriptors\nUsing Euclidean distance]:::algorithm
+    matchDescriptors -->|Decision: Proceed if threshold met| dec3{{Decision\nThreshold met?}}:::decision
     dec3 -->|Yes| edgeDet
-    dec3 -->|No| filterOut3[Filter Out]
+    dec3 -->|No| filterOut3[Filter Out\nNon-near-duplicate]:::filter
     
     %% Stage 4: Edge Detection
-    edgeDet -->|Generate Edge Maps| genEdgeMaps
-    genEdgeMaps -->|Compare Edge Maps| compEdgeMaps
-    compEdgeMaps -->|Decision: Confirm match if below threshold| dec4
-    dec4 -->|Yes| confirmMatch[Confirm Match]
-    dec4 -->|No| filterOut4[Filter Out]
+    edgeDet -->|Generate Edge Maps| genEdgeMaps[Generate Edge Maps\nUsing gradient filters]:::algorithm
+    genEdgeMaps -->|Compare Edge Maps| compEdgeMaps[Compare Edge Maps\nPixel location analysis]:::algorithm
+    compEdgeMaps -->|Decision: Confirm match if below threshold| dec4{{Decision\nConfirm match?}}:::decision
+    dec4 -->|Yes| confirmMatch[Confirm Match\nDuplicate pair]:::confirm
+    dec4 -->|No| filterOut4[Filter Out\nUnique pair]:::filter
 
     %% Implementation Details
-    implementation -->|Conditional Logic| conditionalLogic
-    implementation -->|Parallelization| parallelization
-    implementation -->|Hardware Optimization| hardwareOpt
+    implementation -->|Conditional Logic| conditionalLogic[Conditional Logic\nAdapt stages based on results]:::implementationStrategies
+    implementation -->|Parallelization| parallelization[Parallelization\nConcurrent processing]:::implementationStrategies
+    implementation -->|Hardware Optimization| hardwareOpt[Hardware Optimization\nSpecialized equipment]:::implementationStrategies
     
     %% Results and Conclusion
-    results -->|Performance and Accuracy| perfAcc
-    conclusion -->|Summary and Feedback| summaryFeedback
+    results -->|Performance Benchmarks| perfBench[Performance Benchmarks\nProcessing times and pairs]:::resultsData
+    results -->|Accuracy Metrics| accMetrics[Accuracy Metrics\nPrecision and recall]:::resultsData
+    conclusion -->|Summary of Findings| summaryFindings[Summary of Findings\nEfficient detection capabilities]:::conclusionContent
+    conclusion -->|Feedback Invitation| feedbackInvite[Feedback Invitation\nFor enhancements or deployments]:::conclusionContent
 
-    %% Styling
-    classDef stage fill:#f9f,stroke:#333,stroke-width:2px;
-    class intro,background,pipeline,implementation,results,conclusion stage;
+    %% Styling Definitions
+    classDef introBackground fill:#d8e8f9,stroke:#333,stroke-width:2px;
+    classDef pipelineDetails fill:#f9f7d8,stroke:#333,stroke-width:2px;
+    classDef resultsConclusion fill:#e8f9d8,stroke:#333,stroke-width:2px;
+    classDef stages fill:#f9d8f8,stroke:#333,stroke-width:2px;
+    classDef algorithm fill:#f0f0f0,stroke:#333,stroke-width:2px;
+    classDef decision fill:#f9f0d8,stroke:#333,stroke-width:4px,stroke-dasharray: 5, 5;
+    classDef filter fill:#d8f9ec,stroke:#333,stroke-width:2px;
+    classDef confirm fill:#d8f9d8,stroke:#333,stroke-width:2px;
+    classDef designGoals fill:#f0f0f0,stroke:#333,stroke-width:2px;
+    classDef implementationStrategies fill:#f0f0f0,stroke:#333,stroke-width:2px;
+    classDef resultsData fill:#f0f0f0,stroke:#333,stroke-width:2px;
+    classDef conclusionContent fill:#f0f0f0,stroke:#333,stroke-width:2px;
 ```
 
 - [Introduction](#introduction)
